@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import {CartContext} from '../../contexts/CartContexts'
 
 export default function Home(){
-    const { cart } = useContext(CartContext);
+    const { cart, addItemCart } = useContext(CartContext);
 
     const navigation = useNavigation();
     const [products, setProducts] = useState([
@@ -38,6 +38,10 @@ export default function Home(){
         },
     ])
 
+    function handleAddCart(item){
+        addItemCart(item)
+    }
+
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.cartContent}>
@@ -61,7 +65,7 @@ export default function Home(){
                 style={styles.list}
                 data={products}
                 keyExtractor={ (item) => String(item.id) }
-                renderItem={ ({ item }) => <Products data={item} /> }
+                renderItem={ ({ item }) => <Products data={item} addToCart={ () => handleAddCart(item) } /> }
             />
 
 
