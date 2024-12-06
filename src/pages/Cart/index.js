@@ -4,7 +4,7 @@ import {CartContext} from '../../contexts/CartContexts'
 import CardItem from "../../components/CartItem"
 
 export default function Cart(){
-    const { Cart, addItemCart} = useContext(CartContext)
+    const { Cart, addItemCart, removeItemCart } = useContext(CartContext)
 
     return(
         <View style={styles.container}>
@@ -16,6 +16,7 @@ export default function Cart(){
                     <CardItem 
                         data={item}
                         addAmount={ () => addItemCart(item) }
+                        removeAmount={ () => removeItemCart(item) }
                     />
                 )}
             />

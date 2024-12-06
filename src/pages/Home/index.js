@@ -2,7 +2,7 @@ import React, {useState, useContext} from "react"
 import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity } from "react-native"
 
 import {Feather} from '@expo/vector-icons'
-import Products from '../../components/Products'
+import Products from '../../components/Product'
 import { useNavigation } from '@react-navigation/native'
 import {CartContext} from '../../contexts/CartContexts'
 

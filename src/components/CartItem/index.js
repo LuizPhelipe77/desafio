@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function CardItem({ data, addAmount }) {
+export default function CardItem({ data, addAmount, removeAmount }) {
     const [amount, setAmount] = useState(data?.amount)
 
     function handleIncreasse(){
@@ -9,15 +9,26 @@ export default function CardItem({ data, addAmount }) {
         setAmount(item => item + 1)
     }
 
+    function handleDecresse(){
+        removeAmount()
+        //diminui e chegou em 0
+        if(amount === 0){
+            setAmount(0);
+            return;
+        }
+        //se nao for igual a 0
+        setAmount(item => item -1)
+    }
+
   return (
     <View style={styles.container}>
         <View>
             <Text style={styles.title}>{data.name}</Text>
-            <Text style={styles.price}>{data.price}</Text>
+            <Text style={styles.price}>R$ {data.price}</Text>
         </View>
 
         <View style={styles.amountContainer}>
-            <TouchableOpacity style={styles.buttonAdd}>
+            <TouchableOpacity style={styles.buttonAdd} onPress={handleDecresse}>
                 <Text>-</Text>
             </TouchableOpacity>
 
@@ -27,6 +38,7 @@ export default function CardItem({ data, addAmount }) {
                 <Text>+</Text>
             </TouchableOpacity>
         </View>
+
     </View>
    );
  }
