@@ -12,6 +12,7 @@ export default function Cart(){
                 data={Cart}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={ (item) => String(item.id) }
+                ListEmptyComponent={ () =><Text>Nenhum item na lista</Text>}
                 renderItem={ ({item}) =>  (
                     <CardItem 
                         data={item}
